@@ -6,15 +6,15 @@ const bodyParser = require("body-parser");
 const axios = require("axios");
 const dotenv = require("dotenv");
 const cors = require("cors");
+const path = require("path");
 
 dotenv.config();
 
 const app = express();
+const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(bodyParser.json());
-app.use(express.static('public'));
-
-const PORT = 3000;
+app.use(express.static(path.join(__dirname, "../frontend")));
 
 // POST route for campaign generation
 app.post("/generate-campaign", async (req, res) => {
