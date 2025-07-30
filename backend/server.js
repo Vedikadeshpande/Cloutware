@@ -14,7 +14,10 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(bodyParser.json());
-app.use(express.static(path.join(__dirname, "../frontend")));
+app.use(express.json());
+app.get('/', (req, res) => {
+  res.json({ message: 'Backend is LIVE!' });
+});
 
 // POST route for campaign generation
 app.post("/generate-campaign", async (req, res) => {
@@ -28,7 +31,7 @@ app.post("/generate-campaign", async (req, res) => {
       });
     }
 
-    // 🔍 Qloo API Call - Trending Books, Movies, TV Shows
+    //Qloo API Call - Trending Books, Movies, TV Shows
 let qlooInsights = '';
 const entityTypes = {
   'urn:entity:book': 'Books',
@@ -60,7 +63,7 @@ for (const [type, label] of Object.entries(entityTypes)) {
     const entities = response.data?.results?.entities || [];
     results[label] = entities.map(e => e.name || 'Unknown');
   } catch (err) {
-    console.warn(`❌ Error fetching ${label}:`, err.message);
+    console.warn(`Error fetching ${label}:`, err.message);
     results[label] = [];
   }
 }
@@ -73,7 +76,7 @@ Top TV Shows: ${results['TV Shows'].join(', ') || 'N/A'}
 `;
 
 
-    // 🧠 Prompt Construction
+    // Prompt Construction
     const prompt = `You are Cloutware AI — a cultural intelligence and campaign strategy generator.
 Here are the inputs for the brand:
 
@@ -94,7 +97,7 @@ You're a hyper-strategic, culturally fluent brand strategist known for building 
 Give me the following content structured entirely in valid HTML with headings as <h1>, <h2>, paragraphs inside <p>, and bold text inside <strong>. Also add <div>s with class names for styling, and include simple inline styles or class names like 'section', 'title', 'content' for easy CSS later. Absolutely remove the ** and backticks from the output. Make sure you generate the full output and dont leave the output incomplete. finish the output and double check music artist names, hex colour codes are real and valid. 
 `;
 
-    // 🔥 Groq API Call with LLaMA 3
+    //Groq API Call with LLaMA 3
     const llamaResponse = await axios.post(
       GROQ_API_URL,
       {
@@ -207,7 +210,7 @@ Style: High-quality, mobile-first, social media optimized, authentic and engagin
     });
 
   } catch (error) {
-    console.error('❌ Video generation error:', error);
+    console.error('Video generation error:', error);
     res.status(500).json({ 
       error: "Video generation failed",
       details: error.message,
@@ -216,5 +219,5 @@ Style: High-quality, mobile-first, social media optimized, authentic and engagin
   }
 });
 app.listen(PORT, () => {
-  console.log(`🔥 Server running at http://localhost:${PORT}`);
+  console.log(`Server running at http://localhost:${PORT}`);
 });
