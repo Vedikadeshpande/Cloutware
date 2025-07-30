@@ -16,7 +16,7 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, "../frontend")));
 
-fetch("https://cloutware-backend.onrender.com/generate-campaign", {
+fetch("https://cloutware-data-driven-culture-approved.onrender.com", {
   method: "POST",
   headers: {
     "Content-Type": "application/json"
