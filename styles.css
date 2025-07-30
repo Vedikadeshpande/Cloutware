@@ -1,0 +1,24 @@
+.spline-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -2;
+    pointer-events: none;
+}
+
+body::before {
+    /* Optional: you can disable the grid background if it clashes with Spline */
+    display: none;
+}
+body::after {
+    content: '';
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: rgba(10, 10, 10, 0.5); /* darken it */
+    backdrop-filter: blur(5px); /* optional blur */
+}

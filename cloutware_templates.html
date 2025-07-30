@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <a href="cloutware_templates.html" class="nav-link">Templates By Industry</a>
+  <title>Choose Your Industry</title>
+
+  <!-- Add Spline Viewer -->
+  <script type="module" src="https://unpkg.com/@splinetool/viewer@1.10.38/build/spline-viewer.js"></script>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Inter', sans-serif;
+      background: #0a0a0a;
+      color: white;
+      overflow: hidden;
+      scroll-behavior: smooth;
+    }
+
+    /* Spline 3D Background */
+    .spline-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      z-index: 1;
+      pointer-events: auto;
+      opacity: 1;
+      background: rgba(10, 10, 10, 0.5);
+      backdrop-filter: blur(5px);
+    }
+
+    /* Subtle grid pattern background */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: 
+        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size: 50px 50px;
+      z-index: 2;
+      animation: gridMove 20s linear infinite;
+      pointer-events: none;
+    }
+
+    @keyframes gridMove {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(50px, 50px); }
+    }
+
+    .container {
+      position: relative;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+      pointer-events: none;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    h1 {
+      font-size: 4rem;
+      font-weight: 900;
+      color: #ffffff;
+      margin-bottom: 2rem;
+      letter-spacing: -2px;
+      text-shadow: 0 0 50px rgba(255,255,255,0.3), 0 0 20px rgba(0,0,0,0.8);
+      pointer-events: auto;
+      animation: fadeInUp 1s ease-out;
+    }
+
+    .subtitle {
+      font-size: 1.4rem;
+      color: #cccccc;
+      font-weight: 300;
+      margin-bottom: 3rem;
+      text-shadow: 0 0 20px rgba(255,255,255,0.1), 0 0 10px rgba(0,0,0,0.8);
+      pointer-events: auto;
+      opacity: 0;
+      animation: fadeInUp 1s ease-out 0.3s both;
+    }
+
+    .btn-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      width: 90%;
+      max-width: 900px;
+      pointer-events: auto;
+      opacity: 0;
+      animation: fadeInUp 1s ease-out 0.6s both;
+    }
+
+    .btn-grid button {
+      padding: 1.5rem 1rem;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 12px;
+      background: rgba(20, 20, 20, 0.6);
+      backdrop-filter: blur(10px);
+      color: white;
+      font-size: 1.1rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+      font-family: inherit;
+    }
+
+    .btn-grid button:hover {
+      background: rgba(40, 40, 40, 0.8);
+      border-color: rgba(255, 255, 255, 0.4);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .btn-grid button:active {
+      transform: translateY(-1px);
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #1a1a1a;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #333333;
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #444444;
+    }
+
+    /* Selection styling */
+    ::selection {
+      background: rgba(255,255,255,0.2);
+      color: #ffffff;
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      .container {
+        padding: 0 15px;
+      }
+
+      h1 {
+        font-size: 3rem;
+        letter-spacing: -1px;
+      }
+
+      .subtitle {
+        font-size: 1.2rem;
+      }
+
+      .btn-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        width: 95%;
+      }
+
+      .btn-grid button {
+        padding: 1.2rem 1rem;
+        font-size: 1rem;
+      }
+
+      .spline-bg {
+        height: 60vh; /* Reduce height on mobile for better performance */
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Spline 3D Background -->
+  <spline-viewer class="spline-bg" url="https://prod.spline.design/td61beBnBfu4c7pi/scene.splinecode"></spline-viewer>
+
+  <div class="container">
+    <h1>Select Your Industry</h1>
+    <p class="subtitle">Choose your business category to get started</p>
+    <div class="btn-grid">
+      <button onclick="location.href='tech.html'">Tech & Software</button>
+      <button onclick="location.href='education.html'">Education</button>
+      <button onclick="location.href='fashion.html'">Fashion & Retail</button>
+      <button onclick="location.href='health.html'">Healthcare & Medical</button>
+      <button onclick="location.href='food.html'">Food & Beverages</button>
+      <button onclick="location.href='fitness.html'">Fitness & Wellness</button>
+      <button onclick="location.href='travel.html'">Travel & Tourism</button>
+      <button onclick="location.href='finance.html'">Finance & Legal</button>
+      <button onclick="location.href='entertainment.html'">Entertainment & Media</button>
+    </div>
+  </div>
+
+</body>
+</html>
