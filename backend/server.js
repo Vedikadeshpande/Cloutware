@@ -12,8 +12,11 @@ dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-app.use(cors());
-origin: true,
+app.use(cors({
+  origin: 'cloutware-kappa.vercel.app',
+  methods: ['GET', 'POST'],
+  allowedHeaders: ['Content-Type']
+}));
 app.use(bodyParser.json());
 app.use(express.json());
 app.get('/', (req, res) => {
