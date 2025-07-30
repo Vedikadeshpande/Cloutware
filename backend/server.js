@@ -16,6 +16,28 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, "../frontend")));
 
+fetch("https://cloutware-backend.onrender.com/generate-campaign", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({
+    brandName: "Nike",
+    niche: "Sportswear",
+    objective: "Brand awareness",
+    budget: "$50,000",
+    // ...other fields
+  })
+})
+.then(res => res.json())
+.then(data => {
+  console.log("Campaign generated:", data);
+})
+.catch(err => {
+  console.error("Error:", err);
+});
+
+
 // POST route for campaign generation
 app.post("/generate-campaign", async (req, res) => {
   try {
