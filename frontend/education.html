@@ -943,14 +943,19 @@ Intelligent, empowering, and forward-thinking—driven by a mission to transform
 
     <div class="field-group">
   <label for="budget" class="required">Ad Campaign Budget</label>
-  <div style="align-items: center;">
+  <div class="budget-input-group">
     <input 
       type="number" 
       id="budget" 
       name="budget" 
       placeholder="e.g. 5000" 
+      style="flex: 1; padding: 8px; border: 1px solid #ccc; border-radius: 4px;"
     />
-    <select name="budget_currency" required style="padding: 4px; border: 1px solid #ccc; border-radius: 4px;">
+    <select 
+      name="budget_currency" 
+      required 
+      style="flex: 1; padding: 8px; border: 1px solid #ccc; border-radius: 4px;"
+    >
       <option value="USD">USD ($)</option>
       <option value="EUR">EUR (€)</option>
       <option value="GBP">GBP (£)</option>
