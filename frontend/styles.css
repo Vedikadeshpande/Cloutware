@@ -22,3 +22,23 @@ body::after {
     background: rgba(10, 10, 10, 0.5); /* darken it */
     backdrop-filter: blur(5px); /* optional blur */
 }
+/* Ad Budget Field - Side by side, equal width */
+.budget-input-group {
+  display: flex;
+  gap: 8px; /* Space between input and select */
+}
+
+.budget-field {
+  flex: 1; /* Makes both fields equal width */
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  box-sizing: border-box; /* Critical for width consistency */
+}
+
+.budget-field:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 4px rgba(0, 123, 255, 0.3);
+}
