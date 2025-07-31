@@ -426,39 +426,18 @@
             letter-spacing: -0.5px;
         }
 
-        /* Ensure all text is white and background black */
-.response-content {
-    background-color: #000 !important;
-    color: #fff !important;
-    padding: 30px;
-    border-radius: 8px;
-    border-left: 3px solid #fff;
-    font-family: 'Inter', 'Arial', sans-serif;
-    line-height: 1.6;
-    font-size: 1rem;
-    white-space: pre-wrap;
-    position: relative;
-    z-index: 1;
-    pointer-events: auto;
-}
-
-.response-content *,
-.response-content *::before,
-.response-content *::after {
-    background-color: transparent !important;
-    color: #fff !important;
-}
-
-.response-content h1,
-.response-content h2,
-.response-content h3,
-.response-content p,
-.response-content span,
-response-content li,
-response-content a {
-    color: #fff !important;
-}
-
+        .response-content {
+            color: #cccccc;
+            line-height: 1.7;
+            font-size: 1rem;
+            min-height: 100px;
+            padding: 30px;
+            background: rgba(10, 10, 10, 0.6);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 8px;
+            border-left: 2px solid #ffffff;
+        }
+        
         .loading {
             display: none;
             text-align: center;
