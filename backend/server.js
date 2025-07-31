@@ -99,7 +99,7 @@ Here are the inputs for the brand:
 - Budget Range: ${brand.budget}
 
 You're a hyper-strategic, culturally fluent brand strategist known for building bold, viral, and performance-optimized campaigns for any age group that is specified in Target Age Range. Your task is to create a flawless, presentation-ready ad campaign guide based on brand inputs like brandName, niche, tone, audience, geography, budget and objectives. Use trend analysis, viral formats, platform algorithm shifts, and competitor case studies to inform every move. The guide must include: 2–3 campaign names with slogans, problem-solution-impact narrative, cultural tie-ins where you write about siginicant cultural things relevant including but not limited to festivals in the geography, tv shows, movies etc. using ${qlooInsights}; platform-specific content strategy with format breakdowns and native feature hacks; 5–10 viral content ideas with hooks and format types; brand slogans and voice definition; influencer strategy with ideal creator types, values, and collab ideas; budget breakdown with ROI-optimized tips; color palette with HEX codes and psych impact; typography style rules and font pairings; music/sound design with genre, sample artists, beats, and vibes; posting schedule with launch phases, cadence, and best post times; native CTAs for each platform; ideal model archetypes and their alignment with the brand; real competitor campaigns and why they worked; purpose-led layer if relevant; and finally, a sticky, campaign-worthy brand slogan. Use specific, creative, trend-savvy and non-generic insights informed by ${qlooInsights}. Output must be in markdown format with bold headers, bullet lists, and clean spacing — no paragraph-only formatting. Keep tone witty, bold, meme-literate, and built for high retention, relatability, and reaction loops. 
-Give me the following content structured entirely in valid HTML with headings as <h1>, <h2>, paragraphs inside <p>, and bold text inside <strong>. Also add <div>s with class names for styling, and include simple inline styles or class names like 'section', 'title', 'content' for easy CSS later. Absolutely remove the ** and backticks from the output. You absolutely in no case can use them. Make sure you generate the full output and dont leave the output incomplete. finish the output and double check music artist names, hex colour codes are real and valid. 
+Give me the following content structured entirely in valid HTML with headings as <h1>, <h2>, paragraphs inside <p>, and bold text inside <strong>. Also add <div>s with class names for styling, and include simple inline styles or class names like 'section', 'title', 'content' for easy CSS later. Absolutely remove the ** and backticks from the output. You absolutely in no case can use them and do not leave lines in between between wrapped lines. Make sure you generate the full output and dont leave the output incomplete. finish the output and double check music artist names, hex colour codes are real and valid. 
 `;
 
     //Groq API Call with LLaMA 3
@@ -137,92 +137,7 @@ Give me the following content structured entirely in valid HTML with headings as
     });
   }
 });
-// Add this import at the top with your other imports
-const { GoogleGenerativeAI } = require('@google/generative-ai');
 
-// Initialize Google AI after your other configurations
-const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY);
-
-// Add this new route for video generation
-app.post("/generate-campaign-video", async (req, res) => {
-  try {
-    const { 
-      campaignData, 
-      colorPalette, 
-      visualArchetype, 
-      culturalInsights,
-      duration = 15 
-    } = req.body;
-
-    // Extract key elements for video prompt
-    const brandName = campaignData.brandName || 'Brand';
-    const niche = campaignData.niche || 'lifestyle';
-    const personality = campaignData.personality || 'modern';
-    const geography = campaignData.geography || 'Global';
-    const ageRange = campaignData.ageRange || '18-34';
-
-    // Create culturally-informed video prompt
-    const videoPrompt = `
-Create a ${duration}-second advertisement video for ${brandName}, a ${niche} brand with a ${personality} personality, targeting ${ageRange} year-olds in ${geography}.
-
-Visual Style:
-- Color palette: ${colorPalette}
-- Visual archetype: ${visualArchetype}
-- Cultural context: ${culturalInsights}
-
-The video should:
-- Open with an eye-catching hook within first 2 seconds
-- Feature diverse, authentic representation of the target demographic
-- Include trendy, culturally relevant settings and props
-- Show the product/service in natural, lifestyle contexts
-- End with a strong call-to-action
-- Match the energy and aesthetics popular in ${geography}
-- Include background music that resonates with local tastes
-
-Style: High-quality, mobile-first, social media optimized, authentic and engaging.
-    `;
-
-    console.log('🎬 Generating video with Veo 3...');
-
-    // Use Veo 3 model for video generation
-    const veo3Model = genAI.getGenerativeModel({ 
-      model: "veo-3.0-generate-001" 
-    });
-
-    const videoResult = await veo3Model.generateContent({
-      contents: [{
-        role: 'user',
-        parts: [{ 
-          text: videoPrompt
-        }]
-      }],
-      generationConfig: {
-        videoDuration: duration,
-        videoResolution: "1080p",
-        includeAudio: true,
-        aspectRatio: "9:16" // Mobile-first format
-      }
-    });
-
-    const generatedVideo = videoResult.response.candidates[0].content.parts[0];
-
-    res.json({
-      video: generatedVideo,
-      videoPrompt: videoPrompt,
-      hasAudio: true,
-      culturallyOptimized: true,
-      success: true
-    });
-
-  } catch (error) {
-    console.error('Video generation error:', error);
-    res.status(500).json({ 
-      error: "Video generation failed",
-      details: error.message,
-      success: false 
-    });
-  }
-});
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);
 });
