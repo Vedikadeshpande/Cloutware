@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="Styling/styles.css">
+    <link rel="stylesheet" href="styles.css">
     <script type="module" src="https://unpkg.com/@splinetool/viewer@1.10.37/build/spline-viewer.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -853,7 +853,6 @@
             color: #cccccc;
             line-height: 1.6;
         }
-
         .primary-cta {
             background: #ffffff;
             color: #000000;
@@ -896,40 +895,39 @@
                 <a href="#about" class="nav-link">Who Are We?</a>
                 <a href="#how-it-works" class="nav-link">How Does Cloutware Work?</a>
             </nav>
+            
         </header>
-
-<!-- Form Section -->
+        <!-- Form Section -->
 <section class="form-section parallax-element">
-  <h2 class="form-title">This is a sample form for a health company. Feel free to customise it according to your specific brand/product.</h2>
+  <h2 class="form-title">This editable form template is designed for Education Brands. Customize it to reflect your unique needs, tone, and objectives.</h2>
 
   <form id="brandForm">
     <div class="form-grid">
       <!-- Required Fields -->
       <div class="field-group">
         <label for="brandName" class="required">Brand Name</label>
-        <input type="text" id="brandName" name="brandName" required value="VitalEase">
+        <input type="text" id="brandName" name="brandName" required placeholder="Your Brand Name">
       </div>
 
       <div class="field-group">
         <label for="industry" class="required">Industry/ Product Niche</label>
-        <input type="text" id="industry" name="industry" required value="HealthTech, Wellness Apps, Preventive Care">
+        <input type="text" id="industry" name="industry" required placeholder="e.g. Education, EdTech, Skill Development, Career Readiness">
       </div>
 
       <div class="field-group">
         <label for="personality" class="required">Brand Personality/ Brand Tone</label>
         <textarea id="personality" name="personality" required>
-Empathetic, calm, and evidence-backed. The tone is supportive yet authoritative — ideal for users navigating health concerns or lifestyle improvements. Easy to understand, never alarmist. Think science + soul.
-        </textarea>
+Intelligent, empowering, and forward-thinking—driven by a mission to transform education through innovation. The personality champions progress, accessibility, and lifelong learning, positioning brands as catalysts for student success.</textarea>
       </div>
 
       <div class="field-group">
         <label for="ageRange" class="required">Age Range</label>
-        <input type="text" id="ageRange" name="ageRange" required value="18-45">
+        <input type="text" id="ageRange" name="ageRange" required placeholder="Target Age Range" value="15-35">
       </div>
 
       <div class="field-group">
         <label for="geography" class="required">Geography</label>
-        <input type="text" id="geography" name="geography" required value="Urban India, Tier 1 cities, US, Europe, and Southeast Asia">
+        <input type="text" id="geography" name="geography" required placeholder="Target Location" value="Global reach with strategic focus on high-potential education markets including the U.S., U.K., Canada, Australia, India, and emerging hubs across Southeast Asia and the Middle East.">
       </div>
 
       <div class="field-group">
@@ -937,54 +935,65 @@ Empathetic, calm, and evidence-backed. The tone is supportive yet authoritative 
         <select id="objective" name="objective" required>
           <option value="">Choose your goal</option>
           <option value="awareness">Awareness</option>
-          <option value="engagement" selected>Engagement</option>
-          <option value="conversion">Conversion/Sales</option>
+          <option value="engagement">Engagement</option>
+          <option value="conversion" selected>Conversion/Sales</option>
           <option value="loyalty">Loyalty/Retention</option>
         </select>
       </div>
 
-      <div class="field-group">
-        <label for="budget" class="required">Ad Campaign Budget (USD)</label>
-        <select id="budget" name="budget" required>
-          <option value="" disabled>Select your budget range</option>
-          <option value="micro">$50 – $500 (Micro Budget – MVP tests, A/B)</option>
-          <option value="starter">$500 – $2,000 (Starter – Early-stage growth)</option>
-          <option value="lean" selected>$2,000 – $5,000 (Lean Growth – Scaling small teams)</option>
-          <option value="standard">$5,000 – $10,000 (Standard – Funded startup stage)</option>
-          <option value="scaling">$10,000 – $25,000 (Scaling Up – SaaS & DTC)</option>
-          <option value="high">$25,000 – $50,000 (High Growth – VC-backed campaigns)</option>
-          <option value="aggressive">$50,000 – $100,000 (Aggressive Push – Tier 1 exposure)</option>
-          <option value="enterprise">$100,000+ (Enterprise – National/IPO scale)</option>
-        </select>
-      </div>
+    <div class="field-group">
+  <label for="budget" class="required">Ad Campaign Budget</label>
+  <div style="align-items: center;">
+    <input 
+      type="number" 
+      id="budget" 
+      name="budget" 
+      placeholder="e.g. 5000" 
+    />
+    <select name="budget_currency" required style="padding: 4px; border: 1px solid #ccc; border-radius: 4px;">
+      <option value="USD">USD ($)</option>
+      <option value="EUR">EUR (€)</option>
+      <option value="GBP">GBP (£)</option>
+      <option value="CAD">CAD ($)</option>
+      <option value="AUD">AUD ($)</option>
+      <option value="INR">INR (₹)</option>
+      <option value="JPY">JPY (¥)</option>
+      <option value="CNY">CNY (¥)</option>
+      <option value="BRL">BRL (R$)</option>
+      <option value="MXN">MXN ($)</option>
+      <option value="AED">AED (د.إ)</option>
+      <option value="SGD">SGD ($)</option>
+    </select>
+  </div>
+</div>
 
       <!-- Optional Fields -->
       <div class="field-group">
         <label for="gender">Gender</label>
-        <input type="text" id="gender" name="gender" value="All genders, with women-focused segments">
+        <input type="text" id="gender" name="gender" value="All genders">
       </div>
 
       <div class="field-group">
         <label for="income">Income Level</label>
-        <input type="text" id="income" name="income" value="Middle to upper-middle class, wellness-focused consumers">
+        <input type="text" id="income" name="income" value="Lower-middle to upper-middle class">
       </div>
 
       <div class="field-group">
         <label for="priceRange">Product Price Range</label>
-        <input type="text" id="priceRange" name="priceRange" required placeholder="Your product price range">
+        <input type="text" id="priceRange" name="priceRange" required placeholder="e.g. $20 - $500">
       </div>
 
       <div class="field-group">
         <label for="timeline">Launch Timeline</label>
-        <input type="date" id="timeline" name="timeline">
+        <input type="date" id="timeline" name="timeline" required placeholder="2025-09-20">
       </div>
 
       <div class="field-group">
         <label>Sales Channels</label>
         <div class="checkbox-group">
           <div class="checkbox-item">
-            <input type="checkbox" id="offline" name="channels" value="offline">
-            <label for="offline">Offline Wellness Centres</label>
+            <input type="checkbox" id="offline" name="channels" value="offline" checked>
+            <label for="offline">Offline</label>
           </div>
           <div class="checkbox-item">
             <input type="checkbox" id="website" name="channels" value="website" checked>
@@ -996,7 +1005,7 @@ Empathetic, calm, and evidence-backed. The tone is supportive yet authoritative 
           </div>
           <div class="checkbox-item">
             <input type="checkbox" id="socialmedia" name="channels" value="socialmedia" checked>
-            <label for="socialmedia">Social Media Stores</label>
+            <label for="socialmedia">Social Media Products(Instagram, YouTube)</label>
           </div>
           <div class="checkbox-item">
             <input type="checkbox" id="others" name="channels" value="others" checked>
@@ -1005,15 +1014,13 @@ Empathetic, calm, and evidence-backed. The tone is supportive yet authoritative 
         </div>
         <div class="others-input" id="othersInput">
           <label for="othersText">Please specify:</label>
-          <input type="text" id="othersText" name="othersText" value="Apple Health, Fitbit integrations, Doctor referrals, B2B wellness platforms">
+          <input type="text" id="othersText" name="othersText" value="Coursera, Udemy, Skillshare, Telegram, WhatsApp">
         </div>
       </div>
     </div>
-  </form>
-</section>
-    <button type="submit" class="submit-btn">Make Me Famous</button>
-    </form>
-</section>
+                <button type="submit" class="submit-btn">Make Me Famous</button>
+            </form>
+        </section>
 
         <!-- Response Section -->
         <section class="response-section parallax-element">
@@ -1027,7 +1034,8 @@ Empathetic, calm, and evidence-backed. The tone is supportive yet authoritative 
             </div>
         </section>
     </div>
- <script>
+
+    <script>
     // Smooth scrolling for navigation links
     document.querySelectorAll('.nav-link, .primary-cta').forEach(link => {
     link.addEventListener('click', function(e) {
