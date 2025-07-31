@@ -1116,13 +1116,16 @@
             othersText.value = '';
         }
     });
+    document.addEventListener('DOMContentLoaded', () => {
+        // ✅ Get elements once
+        const form = document.getElementById('brandForm');
+        const submitBtn = document.querySelector('.submit-btn');
+        const loading = document.getElementById('loading');
+        const responseContent = document.getElementById('responseContent');
     
     // Form submission
     form.addEventListener('submit', async function(e) {
-        e.preventDefault();
-        const loading = document.getElementById('loading');
-        const responseContent = document.getElementById('responseContent');
-        const submitBtn = document.querySelector('.submit-btn');
+            e.preventDefault(); //Stops refresh
         
         // Disable button and show loading
         submitBtn.disabled = true;
