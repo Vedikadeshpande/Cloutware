@@ -7,7 +7,7 @@
     z-index: -2;
     pointer-events: none;
 }
-response-section parallax-element {
+responseContent{
   background-color: black; 
   color: white;
   padding: 1rem;
