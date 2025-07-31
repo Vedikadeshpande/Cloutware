@@ -941,19 +941,35 @@
                     </div>
 
                     <div class="field-group">
-                        <label for="budget" class="required">Ad Campaign Budget (USD)</label>
-                        <select id="budget" name="budget" required>
-                            <option value="" disabled selected>Select your budget range</option>
-                            <option value="micro">$50 – $500 (Micro Budget – MVP tests, A/B)</option>
-                            <option value="starter">$500 – $2,000 (Starter – Early-stage growth)</option>
-                            <option value="lean">$2,000 – $5,000 (Lean Growth – Scaling small teams)</option>
-                            <option value="standard">$5,000 – $10,000 (Standard – Funded startup stage)</option>
-                            <option value="scaling">$10,000 – $25,000 (Scaling Up – SaaS & DTC)</option>
-                            <option value="high">$25,000 – $50,000 (High Growth – VC-backed campaigns)</option>
-                            <option value="aggressive">$50,000 – $100,000 (Aggressive Push – Tier 1 exposure)</option>
-                            <option value="enterprise">$100,000+ (Enterprise – National/IPO scale)</option>
-                        </select>
-                    </div>
+        <label for="budget" class="required">Ad Campaign Budget</label>
+        <div class="budget-input-group">
+          <input 
+            type="number" 
+            id="budget" 
+            name="budget" 
+            placeholder="e.g. 5000" 
+            class="budget-field"
+          />
+          <select 
+            name="budget_currency" 
+            required 
+            class="budget-field"
+          >
+            <option value="USD">USD ($)</option>
+            <option value="EUR">EUR (€)</option>
+            <option value="GBP">GBP (£)</option>
+            <option value="CAD">CAD ($)</option>
+            <option value="AUD">AUD ($)</option>
+            <option value="INR">INR (₹)</option>
+            <option value="JPY">JPY (¥)</option>
+            <option value="CNY">CNY (¥)</option>
+            <option value="BRL">BRL (R$)</option>
+            <option value="MXN">MXN ($)</option>
+            <option value="AED">AED (د.إ)</option>
+            <option value="SGD">SGD ($)</option>
+          </select>
+        </div>
+      </div>
 
                     <!-- Optional Fields -->
                     <div class="field-group">
