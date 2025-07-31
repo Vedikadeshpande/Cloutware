@@ -15,7 +15,8 @@ const PORT = process.env.PORT || 3000;
 app.use(cors({
   origin: 'https://cloutware-kappa.vercel.app',
   methods: ['GET', 'POST'],
-  allowedHeaders: ['Content-Type']
+  allowedHeaders: ['Content-Type'],
+  credentials: true
 }));
 app.use(bodyParser.json());
 app.use(express.json());
