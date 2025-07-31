@@ -7,14 +7,6 @@
     z-index: -2;
     pointer-events: none;
 }
-response-content{
-  background-color: black; 
-  color: white;
-  padding: 1rem;
-  border-radius: 8px;
-  font-family: 'Arial', sans-serif; 
-  white-space: pre-wrap; 
-}
 
 body::before {
     display: none;
