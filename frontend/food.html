@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="Styling/styles.css">
+    <link rel="stylesheet" href="styles.css">
     <script type="module" src="https://unpkg.com/@splinetool/viewer@1.10.37/build/spline-viewer.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -853,7 +853,6 @@
             color: #cccccc;
             line-height: 1.6;
         }
-
         .primary-cta {
             background: #ffffff;
             color: #000000;
@@ -896,11 +895,11 @@
                 <a href="#about" class="nav-link">Who Are We?</a>
                 <a href="#how-it-works" class="nav-link">How Does Cloutware Work?</a>
             </nav>
+            
         </header>
-
         <!-- Form Section -->
 <section class="form-section parallax-element">
-  <h2 class="form-title">This is a sample form for a food & beverage company. Feel free to customise it according to your specific brand/product</h2>
+  <h2 class="form-title">This editable form template is designed for Food & Beverage Brands. Customize it to reflect your unique needs, tone, and objectives.</h2>
 
   <form id="brandForm">
     <div class="form-grid">
@@ -911,25 +910,25 @@
       </div>
 
       <div class="field-group">
-        <label for="industry" class="required">Industry/ Product Niche</label>
-        <input type="text" id="industry" name="industry" required placeholder="e.g. Organic Snacks, Energy Drinks, Health Foods" value="Better-for-you Snacks and Functional Beverages">
+        <label for="industry" class="required">Industry / Product Niche</label>
+        <input type="text" id="industry" name="industry" required placeholder="e.g. Snacks, Beverages, Plant-Based, Organic">
       </div>
 
       <div class="field-group">
-        <label for="personality" class="required">Brand Personality/ Brand Tone</label>
+        <label for="personality" class="required">Brand Personality / Brand Tone</label>
         <textarea id="personality" name="personality" required>
-Playful, health-conscious, and energetic. Speaks in a friendly, casual tone with a hint of wit. Emphasizes quality ingredients, sustainability, and lifestyle appeal. Youthful and Instagrammable.
-        </textarea>
+Warm, authentic, and nourishing, rooted in real ingredients and real moments. The brand speaks with honesty and joy, celebrating flavor, wellness, and everyday rituals. Whether playful, premium, or purpose-driven, it connects through shared experiences around food and drink.
+</textarea>
       </div>
 
       <div class="field-group">
         <label for="ageRange" class="required">Age Range</label>
-        <input type="text" id="ageRange" name="ageRange" required value="18-40">
+        <input type="text" id="ageRange" name="ageRange" required placeholder="Target Age Range" value="13–45">
       </div>
 
       <div class="field-group">
         <label for="geography" class="required">Geography</label>
-        <input type="text" id="geography" name="geography" required value="Urban Tier 1 & Tier 2 cities globally, with a focus on health-conscious metro areas">
+        <input type="text" id="geography" name="geography" required placeholder="Target Location" value="Global with focus on North America, Western Europe, and urban centers in Asia (Japan, South Korea, Singapore); expanding into health-conscious markets in the Middle East and Australia.">
       </div>
 
       <div class="field-group">
@@ -944,18 +943,34 @@ Playful, health-conscious, and energetic. Speaks in a friendly, casual tone with
       </div>
 
       <div class="field-group">
-        <label for="budget" class="required">Ad Campaign Budget (USD)</label>
-        <select id="budget" name="budget" required>
-          <option value="" disabled selected>Select your budget range</option>
-          <option value="micro">$50 – $500 (Micro Budget – MVP tests, A/B)</option>
-          <option value="starter">$500 – $2,000 (Starter – Early-stage growth)</option>
-          <option value="lean">$2,000 – $5,000 (Lean Growth – Scaling small teams)</option>
-          <option value="standard">$5,000 – $10,000 (Standard – Funded startup stage)</option>
-          <option value="scaling">$10,000 – $25,000 (Scaling Up – SaaS & DTC)</option>
-          <option value="high">$25,000 – $50,000 (High Growth – VC-backed campaigns)</option>
-          <option value="aggressive">$50,000 – $100,000 (Aggressive Push – Tier 1 exposure)</option>
-          <option value="enterprise">$100,000+ (Enterprise – National/IPO scale)</option>
-        </select>
+        <label for="budget" class="required">Ad Campaign Budget</label>
+        <div class="budget-input-group">
+          <input 
+            type="number" 
+            id="budget" 
+            name="budget" 
+            placeholder="e.g. 5000" 
+            class="budget-field"
+          />
+          <select 
+            name="budget_currency" 
+            required 
+            class="budget-field"
+          >
+            <option value="USD">USD ($)</option>
+            <option value="EUR">EUR (€)</option>
+            <option value="GBP">GBP (£)</option>
+            <option value="CAD">CAD ($)</option>
+            <option value="AUD">AUD ($)</option>
+            <option value="INR">INR (₹)</option>
+            <option value="JPY">JPY (¥)</option>
+            <option value="CNY">CNY (¥)</option>
+            <option value="BRL">BRL (R$)</option>
+            <option value="MXN">MXN ($)</option>
+            <option value="AED">AED (د.إ)</option>
+            <option value="SGD">SGD ($)</option>
+          </select>
+        </div>
       </div>
 
       <!-- Optional Fields -->
@@ -966,17 +981,17 @@ Playful, health-conscious, and energetic. Speaks in a friendly, casual tone with
 
       <div class="field-group">
         <label for="income">Income Level</label>
-        <input type="text" id="income" name="income" value="Middle and upper-middle class, health-conscious consumers">
+        <input type="text" id="income" name="income" value="Middle-class to upper-middle class; health and quality-conscious consumers">
       </div>
 
       <div class="field-group">
         <label for="priceRange">Product Price Range</label>
-        <input type="text" id="priceRange" name="priceRange" required placeholder="e.g. $10 - $50" value="$5 - $50">
+        <input type="text" id="priceRange" name="priceRange" required placeholder="e.g. $3 - $25 per unit">
       </div>
 
       <div class="field-group">
         <label for="timeline">Launch Timeline</label>
-        <input type="date" id="timeline" name="timeline" value="2025-09-01">
+        <input type="date" id="timeline" name="timeline" required>
       </div>
 
       <div class="field-group">
@@ -984,7 +999,7 @@ Playful, health-conscious, and energetic. Speaks in a friendly, casual tone with
         <div class="checkbox-group">
           <div class="checkbox-item">
             <input type="checkbox" id="offline" name="channels" value="offline" checked>
-            <label for="offline">Supermarkets & Retail Stores</label>
+            <label for="offline">Offline (Grocery Stores, Retail, Cafés)</label>
           </div>
           <div class="checkbox-item">
             <input type="checkbox" id="website" name="channels" value="website" checked>
@@ -992,11 +1007,11 @@ Playful, health-conscious, and energetic. Speaks in a friendly, casual tone with
           </div>
           <div class="checkbox-item">
             <input type="checkbox" id="amazon" name="channels" value="amazon" checked>
-            <label for="amazon">Amazon/FMCG Marketplaces</label>
+            <label for="amazon">Amazon</label>
           </div>
           <div class="checkbox-item">
-            <input type="checkbox" id="socialmedia" name="channels" value="socialmedia" checked>
-            <label for="socialmedia">Instagram/TikTok Shops</label>
+            <input type="checkbox" id="socialmedia" name="channels" value="socialmedia">
+            <label for="socialmedia">Social Commerce (Instagram, TikTok, Facebook Shops)</label>
           </div>
           <div class="checkbox-item">
             <input type="checkbox" id="others" name="channels" value="others">
@@ -1005,13 +1020,13 @@ Playful, health-conscious, and energetic. Speaks in a friendly, casual tone with
         </div>
         <div class="others-input" id="othersInput">
           <label for="othersText">Please specify:</label>
-          <input type="text" id="othersText" name="othersText" value="Zomato, Swiggy, UberEats, Quick Commerce">
+          <input type="text" id="othersText" name="othersText" value="Thrive Market, Whole Foods, Instacart, DoorDash, Uber Eats, Shopify Stores">
         </div>
       </div>
     </div>
-    <button type="submit" class="submit-btn">Make Me Famous</button>
-    </form>
-</section>
+                <button type="submit" class="submit-btn">Make Me Famous</button>
+            </form>
+        </section>
 
         <!-- Response Section -->
         <section class="response-section parallax-element">
@@ -1025,38 +1040,119 @@ Playful, health-conscious, and energetic. Speaks in a friendly, casual tone with
             </div>
         </section>
     </div>
-<script>
-// Wait for DOM to be fully loaded
-document.addEventListener('DOMContentLoaded', function () {
+
+    <script>
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('.nav-link, .primary-cta').forEach(link => {
+    link.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+
+        // Only prevent default and scroll if it's an in-page anchor link
+        if (href.startsWith('#')) {
+            e.preventDefault();
+            const targetId = href.substring(1);
+            const targetElement = document.getElementById(targetId);
+            if (targetElement) {
+                targetElement.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        }
+        // If it's a regular link (e.g. cloutware_templates.html), let it work normally
+    });
+});
+
+    // Smooth scroll progress
+    window.addEventListener('scroll', () => {
+        const scrolled = window.scrollY;
+        const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = Math.min(scrolled / maxScroll * 100, 100);
+        document.getElementById('progressLine').style.width = progress + '%';
+    });
+    
+    // Parallax effect
+    window.addEventListener('scroll', () => {
+        const scrolled = window.scrollY;
+        const parallaxElements = document.querySelectorAll('.parallax-element');
+        parallaxElements.forEach((element, index) => {
+            const speed = 0.02 * (index + 1);
+            const yPos = -(scrolled * speed);
+            element.style.transform = `translateY(${yPos}px)`;
+        });
+    });
+    
+    // Parallax effect
+    window.addEventListener('scroll', () => {
+        const scrolled = window.scrollY;
+        const parallaxElements = document.querySelectorAll('.parallax-element');
+        parallaxElements.forEach((element, index) => {
+            const speed = 0.02 * (index + 1);
+            const yPos = -(scrolled * speed);
+            element.style.transform = `translateY(${yPos}px)`;
+        });
+    });
+    
+    // Form interaction handlers
     const form = document.getElementById('brandForm');
-    const loading = document.getElementById('loading');
-    const responseContent = document.getElementById('responseContent');
-    const submitBtn = document.querySelector('.submit-btn');
-    const checkboxes = form.querySelectorAll('input[name="channels"]');
+    const inputs = form.querySelectorAll('input, textarea, select');
+    const checkboxes = form.querySelectorAll('input[type="checkbox"]');
     const othersCheckbox = document.getElementById('others');
     const othersInput = document.getElementById('othersInput');
     const othersText = document.getElementById('othersText');
-
-    // Only proceed if form exists
-    if (!form) {
-        console.error("Form not found!");
-        return;
-    }
-
-    // === Form Submission Handler ===
-    form.addEventListener('submit', async function (e) {
-        e.preventDefault(); // ✅ Prevent page refresh
-
-        // Disable button
+    
+    // Add focus/blur effects
+    inputs.forEach(input => {
+        input.addEventListener('focus', (e) => {
+            const fieldGroup = e.target.closest('.field-group');
+            fieldGroup.classList.add('focused');
+        });
+        input.addEventListener('blur', (e) => {
+            const fieldGroup = e.target.closest('.field-group');
+            fieldGroup.classList.remove('focused');
+        });
+    });
+    
+    // Checkbox interactions
+    checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', (e) => {
+            const item = e.target.closest('.checkbox-item');
+            if (e.target.checked) {
+                item.classList.add('checked');
+            } else {
+                item.classList.remove('checked');
+            }
+        });
+    });
+    
+    // Handle "Others" checkbox to show/hide text input
+    othersCheckbox.addEventListener('change', (e) => {
+        if (e.target.checked) {
+            othersInput.classList.add('show');
+            setTimeout(() => {
+                othersText.focus();
+            }, 200);
+        } else {
+            othersInput.classList.remove('show');
+            othersText.value = '';
+        }
+    });
+    
+    // Form submission
+    form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const loading = document.getElementById('loading');
+        const responseContent = document.getElementById('responseContent');
+        const submitBtn = document.querySelector('.submit-btn');
+        
+        // Disable button and show loading
         submitBtn.disabled = true;
         submitBtn.textContent = 'Generating...';
-
-        // Show loading
         loading.style.display = 'block';
         responseContent.innerHTML = '';
-
+        
         // Collect form data
-        const formData = new FormData(form);
+        const formData = new FormData(this);
         const data = {};
         for (let [key, value] of formData.entries()) {
             if (data[key]) {
@@ -1069,42 +1165,46 @@ document.addEventListener('DOMContentLoaded', function () {
                 data[key] = value;
             }
         }
-
-        // Get all selected channels
+        
+        // Extract channels from checkboxes
         const selectedChannels = [];
-        checkboxes.forEach(cb => {
-            if (cb.checked) selectedChannels.push(cb.value);
+        checkboxes.forEach(checkbox => {
+            if (checkbox.checked) {
+                selectedChannels.push(checkbox.value);
+            }
         });
         data.salesChannels = selectedChannels.join(', ');
-
-        // Prepare payload
+        
+        // Clean up data to match backend expectations
         const payload = {
             brandName: data.brandName,
             niche: data.industry,
             personality: data.personality,
             ageRange: data.ageRange,
             geography: data.geography,
-            gender: data.gender || '',
-            incomeLevel: data.income || '',
-            launchTimeline: data.timeline || '',
+            gender: data.gender,
+            incomeLevel: data.income,
+            launchTimeline: data.timeline,
             priceRange: data.priceRange,
             salesChannels: data.salesChannels,
             objective: data.objective,
             budget: data.budget
         };
-
+        
         try {
-            const response = await fetch('http://localhost:3000/generate-campaign', {
+            // Send request to backend
+            const response = await fetch('https://cloutware.onrender.com/generate-campaign', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(payload)
             });
-
+            
             const result = await response.json();
-
+            
             if (response.ok) {
+                // Hide loading, show result with typewriter effect
                 loading.style.display = 'none';
                 typewriterEffect(responseContent, result.campaign);
             } else {
@@ -1113,99 +1213,52 @@ document.addEventListener('DOMContentLoaded', function () {
         } catch (error) {
             loading.style.display = 'none';
             responseContent.innerHTML = `<p style="color: #ff4444;">Error: ${error.message}</p>`;
-            console.error('Fetch Error:', error);
+            console.error('Error:', error);
         } finally {
+            // Reset button
             submitBtn.disabled = false;
             submitBtn.textContent = 'Make Me Famous';
-
-            // Scroll to response
+            
+            // Smooth scroll to results
             setTimeout(() => {
-                responseContent.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                responseContent.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
             }, 500);
         }
     });
-
-    // === Others Checkbox Toggle ===
-    if (othersCheckbox && othersInput) {
-        othersCheckbox.addEventListener('change', function () {
-            if (this.checked) {
-                othersInput.classList.add('show');
-                setTimeout(() => othersText.focus(), 200);
-            } else {
-                othersInput.classList.remove('show');
-                othersText.value = '';
-            }
-        });
-    }
-
-    // === Focus Effects for Fields ===
-    form.querySelectorAll('input, textarea, select').forEach(input => {
-        input.addEventListener('focus', () => {
-            input.closest('.field-group')?.classList.add('focused');
-        });
-        input.addEventListener('blur', () => {
-            input.closest('.field-group')?.classList.remove('focused');
-        });
-    });
-
-    // === Checkbox Styling Toggle ===
-    checkboxes.forEach(checkbox => {
-        checkbox.addEventListener('change', function () {
-            const item = this.closest('.checkbox-item');
-            if (this.checked) {
-                item.classList.add('checked');
-            } else {
-                item.classList.remove('checked');
-            }
-        });
-    });
-
-    // === Smooth Scroll Navigation ===
-    document.querySelectorAll('.nav-link, .primary-cta').forEach(link => {
-        link.addEventListener('click', function (e) {
-            const href = this.getAttribute('href');
-            if (href && href.startsWith('#')) {
-                e.preventDefault();
-                const targetElement = document.querySelector(href);
-                if (targetElement) {
-                    targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            }
-        });
-    });
-
-    // === Scroll Progress Bar ===
-    window.addEventListener('scroll', () => {
-        const scrolled = window.scrollY;
-        const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-        const progress = Math.min(scrolled / maxScroll * 100, 100);
-        document.getElementById('progressLine').style.width = progress + '%';
-    });
-
-    // === Parallax Effect ===
-    window.addEventListener('scroll', () => {
-        const scrolled = window.scrollY;
-        document.querySelectorAll('.parallax-element').forEach((el, index) => {
-            const speed = 0.02 * (index + 1);
-            el.style.transform = `translateY(${-(scrolled * speed)}px)`;
-        });
-    });
-
-    // === Typewriter Effect Function ===
+    
+    // Typewriter effect for response
     function typewriterEffect(element, text) {
         element.innerHTML = '';
         let index = 0;
-        const timer = setInterval(() => {
+        function type() {
             if (index < text.length) {
                 element.innerHTML = text.slice(0, index + 1) + '<span class="typing-cursor"></span>';
                 index++;
+                setTimeout(type, 2);
             } else {
-                clearInterval(timer);
-                element.innerHTML = text; // Final clean render
+                element.innerHTML = text;
             }
-        }, 2); // Adjust speed here (2ms per char)
+        }
+        type();
     }
-});
-</script>
+    
+    // Add smooth momentum scrolling
+    let isScrolling = false;
+    let scrollTimeout;
+    window.addEventListener('scroll', () => {
+        if (!isScrolling) {
+            document.body.style.pointerEvents = 'none';
+            isScrolling = true;
+        }
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(() => {
+            document.body.style.pointerEvents = 'auto';
+            isScrolling = false;
+        }, 66);
+    });
+    </script>
 </body>
 </html>
