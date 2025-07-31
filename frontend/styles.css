@@ -7,7 +7,7 @@
     z-index: -2;
     pointer-events: none;
 }
-responseContent{
+response-content{
   background-color: black; 
   color: white;
   padding: 1rem;
