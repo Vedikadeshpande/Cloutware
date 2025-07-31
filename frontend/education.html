@@ -1027,38 +1027,118 @@ Empathetic, calm, and evidence-backed. The tone is supportive yet authoritative 
             </div>
         </section>
     </div>
-<script>
-// Wait for DOM to be fully loaded
-document.addEventListener('DOMContentLoaded', function () {
+ <script>
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('.nav-link, .primary-cta').forEach(link => {
+    link.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+
+        // Only prevent default and scroll if it's an in-page anchor link
+        if (href.startsWith('#')) {
+            e.preventDefault();
+            const targetId = href.substring(1);
+            const targetElement = document.getElementById(targetId);
+            if (targetElement) {
+                targetElement.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        }
+        // If it's a regular link (e.g. cloutware_templates.html), let it work normally
+    });
+});
+
+    // Smooth scroll progress
+    window.addEventListener('scroll', () => {
+        const scrolled = window.scrollY;
+        const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = Math.min(scrolled / maxScroll * 100, 100);
+        document.getElementById('progressLine').style.width = progress + '%';
+    });
+    
+    // Parallax effect
+    window.addEventListener('scroll', () => {
+        const scrolled = window.scrollY;
+        const parallaxElements = document.querySelectorAll('.parallax-element');
+        parallaxElements.forEach((element, index) => {
+            const speed = 0.02 * (index + 1);
+            const yPos = -(scrolled * speed);
+            element.style.transform = `translateY(${yPos}px)`;
+        });
+    });
+    
+    // Parallax effect
+    window.addEventListener('scroll', () => {
+        const scrolled = window.scrollY;
+        const parallaxElements = document.querySelectorAll('.parallax-element');
+        parallaxElements.forEach((element, index) => {
+            const speed = 0.02 * (index + 1);
+            const yPos = -(scrolled * speed);
+            element.style.transform = `translateY(${yPos}px)`;
+        });
+    });
+    
+    // Form interaction handlers
     const form = document.getElementById('brandForm');
-    const loading = document.getElementById('loading');
-    const responseContent = document.getElementById('responseContent');
-    const submitBtn = document.querySelector('.submit-btn');
-    const checkboxes = form.querySelectorAll('input[name="channels"]');
+    const inputs = form.querySelectorAll('input, textarea, select');
+    const checkboxes = form.querySelectorAll('input[type="checkbox"]');
     const othersCheckbox = document.getElementById('others');
     const othersInput = document.getElementById('othersInput');
     const othersText = document.getElementById('othersText');
-
-    // Only proceed if form exists
-    if (!form) {
-        console.error("Form not found!");
-        return;
-    }
-
-    // === Form Submission Handler ===
-    form.addEventListener('submit', async function (e) {
-        e.preventDefault(); // ✅ Prevent page refresh
-
-        // Disable button
+    
+    // Add focus/blur effects
+    inputs.forEach(input => {
+        input.addEventListener('focus', (e) => {
+            const fieldGroup = e.target.closest('.field-group');
+            fieldGroup.classList.add('focused');
+        });
+        input.addEventListener('blur', (e) => {
+            const fieldGroup = e.target.closest('.field-group');
+            fieldGroup.classList.remove('focused');
+        });
+    });
+    
+    // Checkbox interactions
+    checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', (e) => {
+            const item = e.target.closest('.checkbox-item');
+            if (e.target.checked) {
+                item.classList.add('checked');
+            } else {
+                item.classList.remove('checked');
+            }
+        });
+    });
+    
+    // Handle "Others" checkbox to show/hide text input
+    othersCheckbox.addEventListener('change', (e) => {
+        if (e.target.checked) {
+            othersInput.classList.add('show');
+            setTimeout(() => {
+                othersText.focus();
+            }, 200);
+        } else {
+            othersInput.classList.remove('show');
+            othersText.value = '';
+        }
+    });
+    
+    // Form submission
+    form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const loading = document.getElementById('loading');
+        const responseContent = document.getElementById('responseContent');
+        const submitBtn = document.querySelector('.submit-btn');
+        
+        // Disable button and show loading
         submitBtn.disabled = true;
         submitBtn.textContent = 'Generating...';
-
-        // Show loading
         loading.style.display = 'block';
         responseContent.innerHTML = '';
-
+        
         // Collect form data
-        const formData = new FormData(form);
+        const formData = new FormData(this);
         const data = {};
         for (let [key, value] of formData.entries()) {
             if (data[key]) {
@@ -1071,42 +1151,46 @@ document.addEventListener('DOMContentLoaded', function () {
                 data[key] = value;
             }
         }
-
-        // Get all selected channels
+        
+        // Extract channels from checkboxes
         const selectedChannels = [];
-        checkboxes.forEach(cb => {
-            if (cb.checked) selectedChannels.push(cb.value);
+        checkboxes.forEach(checkbox => {
+            if (checkbox.checked) {
+                selectedChannels.push(checkbox.value);
+            }
         });
         data.salesChannels = selectedChannels.join(', ');
-
-        // Prepare payload
+        
+        // Clean up data to match backend expectations
         const payload = {
             brandName: data.brandName,
             niche: data.industry,
             personality: data.personality,
             ageRange: data.ageRange,
             geography: data.geography,
-            gender: data.gender || '',
-            incomeLevel: data.income || '',
-            launchTimeline: data.timeline || '',
+            gender: data.gender,
+            incomeLevel: data.income,
+            launchTimeline: data.timeline,
             priceRange: data.priceRange,
             salesChannels: data.salesChannels,
             objective: data.objective,
             budget: data.budget
         };
-
+        
         try {
-            const response = await fetch('http://localhost:3000/generate-campaign', {
+            // Send request to backend
+            const response = await fetch('https://cloutware.onrender.com/generate-campaign', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(payload)
             });
-
+            
             const result = await response.json();
-
+            
             if (response.ok) {
+                // Hide loading, show result with typewriter effect
                 loading.style.display = 'none';
                 typewriterEffect(responseContent, result.campaign);
             } else {
@@ -1115,99 +1199,52 @@ document.addEventListener('DOMContentLoaded', function () {
         } catch (error) {
             loading.style.display = 'none';
             responseContent.innerHTML = `<p style="color: #ff4444;">Error: ${error.message}</p>`;
-            console.error('Fetch Error:', error);
+            console.error('Error:', error);
         } finally {
+            // Reset button
             submitBtn.disabled = false;
             submitBtn.textContent = 'Make Me Famous';
-
-            // Scroll to response
+            
+            // Smooth scroll to results
             setTimeout(() => {
-                responseContent.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                responseContent.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
             }, 500);
         }
     });
-
-    // === Others Checkbox Toggle ===
-    if (othersCheckbox && othersInput) {
-        othersCheckbox.addEventListener('change', function () {
-            if (this.checked) {
-                othersInput.classList.add('show');
-                setTimeout(() => othersText.focus(), 200);
-            } else {
-                othersInput.classList.remove('show');
-                othersText.value = '';
-            }
-        });
-    }
-
-    // === Focus Effects for Fields ===
-    form.querySelectorAll('input, textarea, select').forEach(input => {
-        input.addEventListener('focus', () => {
-            input.closest('.field-group')?.classList.add('focused');
-        });
-        input.addEventListener('blur', () => {
-            input.closest('.field-group')?.classList.remove('focused');
-        });
-    });
-
-    // === Checkbox Styling Toggle ===
-    checkboxes.forEach(checkbox => {
-        checkbox.addEventListener('change', function () {
-            const item = this.closest('.checkbox-item');
-            if (this.checked) {
-                item.classList.add('checked');
-            } else {
-                item.classList.remove('checked');
-            }
-        });
-    });
-
-    // === Smooth Scroll Navigation ===
-    document.querySelectorAll('.nav-link, .primary-cta').forEach(link => {
-        link.addEventListener('click', function (e) {
-            const href = this.getAttribute('href');
-            if (href && href.startsWith('#')) {
-                e.preventDefault();
-                const targetElement = document.querySelector(href);
-                if (targetElement) {
-                    targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            }
-        });
-    });
-
-    // === Scroll Progress Bar ===
-    window.addEventListener('scroll', () => {
-        const scrolled = window.scrollY;
-        const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-        const progress = Math.min(scrolled / maxScroll * 100, 100);
-        document.getElementById('progressLine').style.width = progress + '%';
-    });
-
-    // === Parallax Effect ===
-    window.addEventListener('scroll', () => {
-        const scrolled = window.scrollY;
-        document.querySelectorAll('.parallax-element').forEach((el, index) => {
-            const speed = 0.02 * (index + 1);
-            el.style.transform = `translateY(${-(scrolled * speed)}px)`;
-        });
-    });
-
-    // === Typewriter Effect Function ===
+    
+    // Typewriter effect for response
     function typewriterEffect(element, text) {
         element.innerHTML = '';
         let index = 0;
-        const timer = setInterval(() => {
+        function type() {
             if (index < text.length) {
                 element.innerHTML = text.slice(0, index + 1) + '<span class="typing-cursor"></span>';
                 index++;
+                setTimeout(type, 2);
             } else {
-                clearInterval(timer);
-                element.innerHTML = text; // Final clean render
+                element.innerHTML = text;
             }
-        }, 2); // Adjust speed here (2ms per char)
+        }
+        type();
     }
-});
-</script>
+    
+    // Add smooth momentum scrolling
+    let isScrolling = false;
+    let scrollTimeout;
+    window.addEventListener('scroll', () => {
+        if (!isScrolling) {
+            document.body.style.pointerEvents = 'none';
+            isScrolling = true;
+        }
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(() => {
+            document.body.style.pointerEvents = 'auto';
+            isScrolling = false;
+        }, 66);
+    });
+    </script>
 </body>
 </html>
