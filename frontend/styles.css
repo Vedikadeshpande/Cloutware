@@ -7,9 +7,16 @@
     z-index: -2;
     pointer-events: none;
 }
+response-section parallax-element {
+  background-color: black; 
+  color: white;
+  padding: 1rem;
+  border-radius: 8px;
+  font-family: 'Arial', sans-serif; 
+  white-space: pre-wrap; 
+}
 
 body::before {
-    /* Optional: you can disable the grid background if it clashes with Spline */
     display: none;
 }
 body::after {
@@ -22,7 +29,7 @@ body::after {
     background: rgba(10, 10, 10, 0.5); /* darken it */
     backdrop-filter: blur(5px); /* optional blur */
 }
-/* Ad Budget Field - Side by side, equal width */
+/* Ad Budget Field */
 .budget-input-group {
   display: flex;
   gap: 8px; /* Space between input and select */
