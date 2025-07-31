@@ -427,16 +427,20 @@
         }
 
         .response-content {
-        color: #ffffff; /* Ensure text is white */
-        line-height: 1.7;
-        font-size: 1rem;
-        min-height: 100px;
+        background-color: #000 !important;
+        color: #fff !important;
         padding: 30px;
-        background: black; /* Solid black background */
-        border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border */
         border-radius: 8px;
-        border-left: 2px solid #ffffff; /* Highlight border */
-        white-space: pre-wrap; /* Preserve line breaks from LLM */
+        border-left: 3px solid #fff;
+        font-family: 'Inter', 'Arial', sans-serif;
+        line-height: 1.6;
+        font-size: 1rem;
+        white-space: pre-wrap;
+        }
+
+        .response-content * {
+        background-color: transparent !important;
+        color: inherit !important;
         }
 
         .loading {
