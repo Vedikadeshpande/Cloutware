@@ -427,15 +427,16 @@
         }
 
         .response-content {
-            color: #ffffff;
-            line-height: 1.7;
-            font-size: 1rem;
-            min-height: 100px;
-            padding: 30px;
-            background: black;
-            border: black;
-            border-radius: 8px;
-            border-left: 2px solid #ffffff;
+        color: #ffffff; /* Ensure text is white */
+        line-height: 1.7;
+        font-size: 1rem;
+        min-height: 100px;
+        padding: 30px;
+        background: black; /* Solid black background */
+        border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border */
+        border-radius: 8px;
+        border-left: 2px solid #ffffff; /* Highlight border */
+        white-space: pre-wrap; /* Preserve line breaks from LLM */
         }
 
         .loading {
