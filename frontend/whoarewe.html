@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <title>Cloutware - Data Driven, Culture Approved.</title>
 
     <!-- Spline 3D Viewer -->
@@ -17,10 +16,7 @@
         }
 
         body {
-            p {
-                font-weight: 400; /* Regular paragraph */
-                font-family: 'Space Grotesk', sans-serif;
-            }
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Inter', sans-serif;
             background: #0a0a0a;
             min-height: 100vh;
             color: #ffffff;
@@ -86,7 +82,6 @@
         /* Header */
         .header {
             text-align: center;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Inter', sans-serif;
             padding: 150px 0 120px;
             animation: fadeInUp 1s ease-out;
             position: relative;
@@ -132,7 +127,6 @@
         .nav-link {
             color: #888888;
             text-decoration: none;
-            font-family: 'Space Grotesk', sans-serif;
             font-weight: 500;
             font-size: 1rem;
             padding: 12px 24px;
@@ -154,7 +148,6 @@
         /* Section Titles */
         .section-title {
             font-size: 2.5rem;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Inter', sans-serif;
             font-weight: 700;
             text-align: center;
             margin-bottom: 20px;
@@ -350,30 +343,52 @@
             <p class="tagline">Data Driven, Culture Approved.</p>
             <nav class="nav-menu">
                 <a href="cloutware_templates.html" class="nav-link">Templates By Industry</a>
-                <a href="whoarewe.html"nav-link">Who Are We?</a>
-                <a href="howitworks.html" class="nav-link">How It Works</a>
+                <a href="whoarewe.html" class="nav-link">Who Are We?</a>
+                <a href="#how-it-works" class="nav-link">How It Works</a>
             </nav>
         </header>
 
-        <!-- Who Are We Section -->
-<section id="about" class="about-section parallax-element">
-    <div class="about-content">
-        <h2 class="section-title">Who Are We</h2>
-        <p class="section-subtitle">Data Driven, Culture Approved.</p>
+        <!-- How It Works Section -->
+        <section id="how-it-works" class="how-it-works-section parallax-element">
+            <div class="steps-container">
+                <h2 class="section-title">How It Works</h2>
+                <p class="section-subtitle">Engineered for the attention economy.</p>
 
-        <!-- Founder & Mission -->
-        <div class="about-text">
-            <p>I'm <strong>Vedika Deshpande</strong>, a third-year Computer Science student at <strong>University Jaipur</strong>, and the creator of <strong>Cloutware</strong>.</p>
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Cultural Intelligence Layer</h3>
+                        <p>We pull real-time data from Qloo’s API on trending TV shows, movies, music, and books across your target geography and audience.</p>
+                    </div>
+                </div>
 
-            <p>I noticed that brands especially startups and creators spend large budgets on advertising, and yet continuously fail because their campaigns feel disconnected. Advertising is a crucial and a costly step in any brand's journey, yet most tools rely on guesswork, outdated trends, or generic templates that don't bring real engagement.</p>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Brand Input Fusion</h3>
+                        <p>You tell us your brand name, niche, tone, audience, and budget. Our system blends your identity with cultural signals to ensure relevance and authenticity.</p>
+                    </div>
+                </div>
 
-            <p>This didn't feel right to me. Technology should do better. It should understand not just data, but human behavior: what people are watching, listening to, and consuming in today's world.</p>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Groq-Powered Strategy Engine</h3>
+                        <p>Using a hyper-strategic prompt, Groq’s ultra-fast LLM generates a full campaign guide. From slogans to influencer types, sound design, and posting schedules.</p>
+                    </div>
+                </div>
 
-            <p>I've always been passionate about building things that enhance the human experience. I asked: <em>What if brands could stop guessing and start knowing what's culturally relevant, who it resonates with, and how to act on it?</em></p>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Instant Campaign Blueprint</h3>
+                        <p>Get a markdown-ready, presentation-perfect strategy in under a second optimized for virality, platform algorithms, and cultural resonance.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-            <p>With Cloutware, I want to give every brand no matter how small a better shot at being seen, heard, and remembered.</p>
     </div>
-</section>
 
     <!-- JavaScript -->
     <script>
