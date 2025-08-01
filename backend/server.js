@@ -1,4 +1,4 @@
-const GROQ_API_URL = 'https://api.groq.com/openai/v1/chat/completions'; // Fixed URL (removed trailing space)
+const GROQ_API_URL = 'https://api.groq.com/openai/v1/chat/completions';
 const QLOO_API_URL = "https://hackathon.api.qloo.com/v2/insights";
 
 const express = require("express");
@@ -36,7 +36,7 @@ app.post("/generate-campaign", async (req, res) => {
       });
     }
 
-    //Qloo API Call - Trending Books, Movies, TV Shows
+    //Qloo API Call
 let qlooInsights = '';
 const entityTypes = {
   'urn:entity:book': 'Books',
@@ -99,7 +99,7 @@ Here are the inputs for the brand:
 - Budget Range: ${brand.budget}
 
 You're a hyper-strategic, culturally fluent brand strategist known for building bold, viral, and performance-optimized campaigns for any age group that is specified in Target Age Range. Your task is to create a flawless, presentation-ready ad campaign guide based on brand inputs like brandName, niche, tone, audience, geography, budget and objectives. Use trend analysis, viral formats, platform algorithm shifts, and competitor case studies to inform every move. The guide must include: 2–3 campaign names with slogans, problem-solution-impact narrative, cultural tie-ins where you write about siginicant cultural things relevant including but not limited to festivals in the geography, tv shows, movies etc. using ${qlooInsights}; platform-specific content strategy with format breakdowns and native feature hacks; 5–10 viral content ideas with hooks and format types; brand slogans and voice definition; influencer strategy with ideal creator types, values, and collab ideas; budget breakdown with ROI-optimized tips; color palette with HEX codes and psych impact; typography style rules and font pairings; music/sound design with genre, sample artists, beats, and vibes; posting schedule with launch phases, cadence, and best post times; native CTAs for each platform; ideal model archetypes and their alignment with the brand; real competitor campaigns and why they worked; purpose-led layer if relevant; and finally, a sticky, campaign-worthy brand slogan. Use specific, creative, trend-savvy and non-generic insights informed by ${qlooInsights}. Output must be in markdown format with bold headers, bullet lists, and clean spacing — no paragraph-only formatting. Keep tone witty, bold, meme-literate, and built for high retention, relatability, and reaction loops. 
-Give me the following content structured entirely in valid HTML with headings as <h1>, <h2>, paragraphs inside <p>, and bold text inside <strong>. Also add <div>s with class names for styling, and include simple inline styles or class names like 'section', 'title', 'content' for easy CSS later. Absolutely remove the ** and backticks from the output. You absolutely in no case can use them and do not leave lines in between between wrapped lines. Make sure you generate the full output and dont leave the output incomplete. finish the output and double check music artist names, hex colour codes are real and valid. 
+Give me the following content structured entirely in valid HTML with headings as <h1>, <h2>, paragraphs inside <p>, and bold text inside <strong>. Also add <div>s with class names for styling, and include simple inline styles or class names like 'section', 'title', 'content' for easy CSS later. Absolutely remove the ** and backticks from the output. You absolutely in no case can use them and do not leave lines in between between wrapped lines. All the subheadings along with "ROI-optimized tips" will be bold like the rest of the subheadings. Make sure you generate the full output and dont leave the output incomplete. finish the output and double check music artist names, hex colour codes are real and valid. 
 `;
 
     //Groq API Call with LLaMA 3
