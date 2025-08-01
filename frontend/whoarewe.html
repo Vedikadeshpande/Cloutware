@@ -145,6 +145,285 @@
             box-shadow: 0 8px 25px rgba(0,0,0,0.3);
         }
 
+        /* Form Section */
+        .form-section {
+            background: rgba(20, 20, 20, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            padding: 60px 50px;
+            margin-bottom: 50px;
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: slideInUp 0.8s ease-out 0.5s both;
+            position: relative;
+            z-index: 50;
+        }
+
+        .form-title {
+            font-size: 2rem;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 50px;
+            color: #ffffff;
+            letter-spacing: -1px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .field-group {
+            position: relative;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: slideInField 0.6s ease-out forwards;
+        }
+
+        .field-group:nth-child(1) { animation-delay: 0.7s; }
+        .field-group:nth-child(2) { animation-delay: 0.8s; }
+        .field-group:nth-child(3) { animation-delay: 0.9s; }
+        .field-group:nth-child(4) { animation-delay: 1.0s; }
+        .field-group:nth-child(5) { animation-delay: 1.1s; }
+        .field-group:nth-child(6) { animation-delay: 1.2s; }
+        .field-group:nth-child(7) { animation-delay: 1.3s; }
+        .field-group:nth-child(8) { animation-delay: 1.4s; }
+        .field-group:nth-child(9) { animation-delay: 1.5s; }
+        .field-group:nth-child(10) { animation-delay: 1.6s; }
+        .field-group:nth-child(11) { animation-delay: 1.7s; }
+        .field-group:nth-child(12) { animation-delay: 1.8s; }
+
+        @keyframes slideInField {
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 12px;
+            color: #cccccc;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+            letter-spacing: 0.5px;
+        }
+
+        .required::after {
+            content: " *";
+            color: #ff4444;
+            font-weight: 400;
+        }
+
+        input[type="text"],
+        input[type="date"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 16px 20px;
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 8px;
+            font-size: 1rem;
+            background: rgba(30, 30, 30, 0.6);
+            color: #ffffff;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-family: inherit;
+        }
+
+        input[type="text"]:focus,
+        input[type="date"]:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-color: rgba(255,255,255,0.4);
+            background: rgba(40, 40, 40, 0.8);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+
+        input[type="text"]::placeholder,
+        textarea::placeholder {
+            color: #666666;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+            font-family: inherit;
+        }
+
+        select {
+            cursor: pointer;
+        }
+
+        select option {
+            background: #1a1a1a;
+            color: #ffffff;
+            padding: 10px;
+        }
+
+        .checkbox-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 15px;
+            margin-top: 12px;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 16px;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            background: rgba(30, 30, 30, 0.3);
+        }
+
+        .checkbox-item:hover {
+            border-color: rgba(255,255,255,0.3);
+            background: rgba(40, 40, 40, 0.5);
+            transform: translateY(-1px);
+        }
+
+        .checkbox-item.checked {
+            background: rgba(255,255,255,0.1);
+            border-color: rgba(255,255,255,0.4);
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            accent-color: #ffffff;
+            cursor: pointer;
+        }
+
+        .checkbox-item label {
+            margin: 0;
+            cursor: pointer;
+            font-size: 0.9rem;
+            color: #cccccc;
+        }
+
+        .others-input {
+            margin-top: 15px;
+            opacity: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateY(-10px);
+        }
+
+        .others-input.show {
+            opacity: 1;
+            max-height: 100px;
+            transform: translateY(0);
+        }
+
+        .others-input input {
+            margin-top: 8px;
+        }
+
+        .submit-btn {
+            background: #ffffff;
+            color: #000000;
+            border: none;
+            padding: 18px 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: block;
+            margin: 0 auto;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            font-family: inherit;
+        }
+
+        .submit-btn:hover {
+            background: #f0f0f0;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255,255,255,0.1);
+        }
+
+        .submit-btn:active {
+            transform: translateY(-1px);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Response Section */
+        .response-section {
+            background: rgba(20, 20, 20, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            padding: 60px 50px;
+            margin-bottom: 50px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: slideInUp 0.8s ease-out 2s both;
+            position: relative;
+            z-index: 50;
+        }
+
+        .response-title {
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin-bottom: 30px;
+            color: #ffffff;
+            letter-spacing: -0.5px;
+        }
+
+        .response-content {
+            color: #cccccc;
+            line-height: 1.7;
+            font-size: 1rem;
+            min-height: 100px;
+            padding: 30px;
+            background: rgba(10, 10, 10, 0.6);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 8px;
+            border-left: 2px solid #ffffff;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 40px;
+        }
+
+        .spinner {
+            border: 2px solid rgba(255,255,255,0.1);
+            border-radius: 50%;
+            border-top: 2px solid #ffffff;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        .loading-text {
+            color: #888888;
+            font-size: 1rem;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
         /* Section Titles */
         .section-title {
             font-size: 2.5rem;
@@ -183,6 +462,31 @@
             line-height: 1.8;
             color: #cccccc;
             margin-bottom: 30px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            color: #888888;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         /* How It Works Section */
@@ -348,45 +652,24 @@
             </nav>
         </header>
 
-        <!-- How It Works Section -->
-        <section id="how-it-works" class="how-it-works-section parallax-element">
-            <div class="steps-container">
-                <h2 class="section-title">How It Works</h2>
-                <p class="section-subtitle">Engineered for the attention economy.</p>
+        <section id="about" class="about-section parallax-element">
+    <div class="about-content">
+        <h2 class="section-title">Who Are We</h2>
+        <p class="section-subtitle">Data Driven, Culture Approved.</p>
 
-                <div class="step">
-                    <div class="step-number">1</div>
-                    <div class="step-content">
-                        <h3>Cultural Intelligence Layer</h3>
-                        <p>We pull real-time data from Qloo’s API on trending TV shows, movies, music, and books across your target geography and audience.</p>
-                    </div>
-                </div>
+        <!-- Founder & Mission -->
+        <div class="about-text">
+            <p>I'm <strong>Vedika Deshpande</strong>, a third-year Computer Science student at <strong>University Jaipur</strong>, and the creator of <strong>Cloutware</strong>.</p>
 
-                <div class="step">
-                    <div class="step-number">2</div>
-                    <div class="step-content">
-                        <h3>Brand Input Fusion</h3>
-                        <p>You tell us your brand name, niche, tone, audience, and budget. Our system blends your identity with cultural signals to ensure relevance and authenticity.</p>
-                    </div>
-                </div>
+            <p>I noticed that brands especially startups and creators spend large budgets on advertising, and yet continuously fail because their campaigns feel disconnected. Advertising is a crucial and a costly step in any brand's journey, yet most tools rely on guesswork, outdated trends, or generic templates that don't bring real engagement.</p>
 
-                <div class="step">
-                    <div class="step-number">3</div>
-                    <div class="step-content">
-                        <h3>Groq-Powered Strategy Engine</h3>
-                        <p>Using a hyper-strategic prompt, Groq’s ultra-fast LLM generates a full campaign guide. From slogans to influencer types, sound design, and posting schedules.</p>
-                    </div>
-                </div>
+            <p>This didn't feel right to me. Technology should do better. It should understand not just data, but human behavior: what people are watching, listening to, and consuming in today's world.</p>
 
-                <div class="step">
-                    <div class="step-number">4</div>
-                    <div class="step-content">
-                        <h3>Instant Campaign Blueprint</h3>
-                        <p>Get a markdown-ready, presentation-perfect strategy in under a second optimized for virality, platform algorithms, and cultural resonance.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+            <p>I've always been passionate about building things that enhance the human experience. I asked: <em>What if brands could stop guessing and start knowing what's culturally relevant, who it resonates with, and how to act on it?</em></p>
+
+            <p>With Cloutware, I want to give every brand no matter how small a better shot at being seen, heard, and remembered.</p>
+    </div>
+</section>
 
     </div>
 
