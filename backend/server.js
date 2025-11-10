@@ -34,6 +34,25 @@ app.post("/generate-campaign", async (req, res) => {
         error: "Missing required fields: brandName, niche, objective, and budget are required" 
       });
     }
+    const prompt = `You are Cloutware AI — a cultural intelligence and campaign strategy generator.
+Here are the inputs for the brand:
+
+- Brand Name: ${brand.brandName}
+- Niche: ${brand.niche}
+- Personality & Tone: ${brand.personality}
+- Target Age Range: ${brand.ageRange}
+- Geography: ${brand.geography}
+- Gender: ${brand.gender || 'Not specified'}
+- Income Level: ${brand.incomeLevel || 'Not specified'}
+- Launch Date: ${brand.launchTimeline || 'Not specified'}
+- Product Price Range: ${brand.priceRange || 'Not specified'}
+- Sales Channel: ${brand.salesChannels || 'Not specified'}
+- Objective: ${brand.objective}
+- Budget Range: ${brand.budget}
+
+You're a hyper-strategic, culturally fluent brand strategist known for building bold, viral, and performance-optimized campaigns for any age group that is specified in Target Age Range. Your task is to create a flawless, presentation-ready ad campaign guide based on brand inputs like brandName, niche, tone, audience, geography, budget and objectives. Use trend analysis, viral formats, platform algorithm shifts, and competitor case studies to inform every move. The guide must include: 2–3 campaign names with slogans, cultural tie-ins((Using ${qlooInsights}, identify the top trending TV shows, movies, music, and novels in the target geography. Explain how the brand can authentically integrate motifs, aesthetics, narrative tones, or character archetypes from these into the campaign without feeling forced or exploitative. Include relevant cultural moments like festivals, memes, or viral moments in this section); a visual architecture of the vibe of the campaign ad; platform-specific content strategy with format breakdowns and native feature hacks; 5–10 viral content ideas with hooks and format types; brand slogans and voice definition; influencer strategy with ideal creator types, values, and collab ideas; budget breakdown with ROI-optimized tips; color palette with HEX codes and psych impact; typography style rules and font pairings; music/sound design with genre, sample artists, beats, and vibes; posting schedule with launch phases, cadence, and best post times; native CTAs for each platform; ideal model archetypes and their alignment with the brand; real competitor campaigns and why they worked; purpose-led layer if relevant; and finally, a sticky, campaign-worthy brand slogan. Use specific, creative, trend-savvy and non-generic insights informed by ${qlooInsights}. Output must be in markdown format with bold headers, bullet lists, and clean spacing — no paragraph-only formatting. Keep tone witty, bold, meme-literate, and built for high retention, relatability, and reaction loops. 
+Give me the following content structured entirely in valid HTML with headings as <h1>, <h2>, paragraphs inside <p>, and bold text inside <strong>. Also add <div>s with class names for styling, and include simple inline styles or class names like 'section', 'title', 'content' for easy CSS later. Absolutely remove the ** and backticks and any images from the output. No images of any format. Make sure you generate the full output and dont leave the output incomplete. finish the output and double check music artist names, hex colour codes are real and valid. Make sure any information you provide is updated including no igtv anymore on instagram. Include the colour pallette in visual architecture only and double check and make sure all the keys and subheadings are bold but no text is bold and everything is properly markdown structured
+`;
     
     //Groq API Call with LLaMA 3
     const llamaResponse = await axios.post(
@@ -74,5 +93,6 @@ app.post("/generate-campaign", async (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);
 });
+
 
 
