@@ -34,29 +34,7 @@ app.post("/generate-campaign", async (req, res) => {
         error: "Missing required fields: brandName, niche, objective, and budget are required" 
       });
     }
-
-const results = {};
-
-for (const [type, label] of Object.entries(entityTypes)) {
-  try {
-      params: {
-        'filter.type': type,
-        'signal.location.query': brand.geography || 'Global',
-        'signal.age_range': brand.ageRange || '18-34',
-        'signal.gender': brand.gender || 'unknown',
-        'signal.income': brand.incomeLevel || 'middle',
-        'signal.interests': brand.industry || 'entertainment',
-        take: 5
-      }
-    });
-
-    const entities = response.data?.results?.entities || [];
-    results[label] = entities.map(e => e.name || 'Unknown');
-  } catch (err) {
-    console.warn(`Error fetching ${label}:`, err.message);
-    results[label] = [];
-  }
-}
+    
     //Groq API Call with LLaMA 3
     const llamaResponse = await axios.post(
       GROQ_API_URL,
@@ -96,4 +74,5 @@ for (const [type, label] of Object.entries(entityTypes)) {
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);
 });
+
 
