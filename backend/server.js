@@ -58,7 +58,7 @@ Give me the following content structured entirely in valid HTML with headings as
     const llamaResponse = await axios.post(
       GROQ_API_URL,
       {
-        model: "llama3-70b-8192",
+        model: "llama-3.3-70b-versatile",
         messages: [
           { role: "system", content: "You are Cloutware AI — a cultural intelligence and campaign strategy generator." },
           { role: "user", content: prompt }
@@ -93,6 +93,7 @@ Give me the following content structured entirely in valid HTML with headings as
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);
 });
+
 
 
 
